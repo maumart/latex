@@ -1,0 +1,258 @@
+% Basisformatierungen
+\documentclass[fontsize=12pt, oneside, pagesize=auto, ngerman, a4paper, titlepage, openany,
+bibliography=totocnumbered, listof=totocnumbered, headings=big, DIV=14, BCOR=5mm,
+headinclude=true, footinclude=false, final]{scrbook} %numbers=noenddot,
+
+% Geometry
+%\usepackage[inner=2cm, outer=3cm, top=2.5cm, bottom=2.5cm, includeheadfoot]{geometry}
+
+%Symbole
+\usepackage{mathabx}
+
+% Subsubsection mit Nummern
+\setcounter{secnumdepth}{3}
+
+% Anzahl der Ebenen im Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+
+% Zeilenabstand 1,5em
+\usepackage[onehalfspacing]{setspace}
+
+% Absatz Neue Zeile durch Leerzeile im Quellcode
+\usepackage{parskip}
+
+% Absatz Neue Zeile
+% keine Einrueckung nach rechts
+\setlength{\parindent}{0in}
+
+% Bilderumgebung
+\usepackage{graphicx}
+
+% Sprache - Neue Rechtschreibung 
+\usepackage[ngerman]{babel}
+
+% Umlaute
+\usepackage[utf8]{inputenc}
+
+% T1 / Cork encoding
+%\usepackage{textcomp}
+\usepackage[T1]{fontenc}
+
+% LModern schoene Schrift
+%\usepackage{lmodern}
+\usepackage[osf,sc]{mathpazo}
+\renewcommand{\rmdefault}{pplj}
+
+% Kopf- und Fusszeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyfoot{}
+
+% Kopfzeile links bzw. innen
+%\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+
+% Kopfzeile rechts bzw. aussen
+%\fancyhead[RO,LE]{\thepage}
+
+\fancypagestyle{appendix}{%
+    %\fancyhead[LO,RE]{Anhang C.~~\nouppercase{\leftmark}}
+    %\fancyhead[C]{Anhang C.~~\nouppercase{\leftmark}}
+    \fancyhead{}
+    %\renewcommand{\headrulewidth}{0.4pt}
+}
+
+\fancypagestyle{chapterstyle}{%
+    %\fancyhead[LO,RE]{Anhang C.~~\nouppercase{\leftmark}}
+    \fancyhead{}
+    %\renewcommand{\headrulewidth}{0.4pt}
+}
+
+\fancyhead[C]{\nouppercase{\leftmark}}
+
+% Fusszeile Seitenzahl
+\fancyfoot[C]{\thepage}
+
+% Linie oben
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Linie unten
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Kopfzeile auch bei Chapterseiten einfuegen
+%\def\chapterpagestyle{fancy}
+\def\chapterpagestyle{chapterstyle}
+
+% Schusterjungenverhinderung
+\clubpenalty = 10000 % schliesst Schusterjungen aus
+\widowpenalty = 10000 % schliesst Hurenkinder aus
+
+% Blindtext
+\usepackage{blindtext}
+
+% Für Ausrichtungen von Grafiken und Tabellen
+\usepackage{float} 
+\restylefloat{table} 
+
+% Package fuer Text neben Bild
+\usepackage{wrapfig}
+
+% listings
+\usepackage{listings}
+
+% Umlaute fuer Listing umschreiben
+\lstset{
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           {Ü}{{\"U}}1
+           {Ö}{{\"O}}1
+           {Ä}{{\"A}}1
+           {ß}{{\ss}}1
+}
+
+% Anhang Name für Listings ändern
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+\renewcommand{\lstlistingname}{Quellcode}
+
+% Listings HTML-Vorlage
+\lstdefinestyle{HTML} {
+	language=html,
+    basicstyle=\scriptsize\ttfamily,
+    keywordstyle=\bfseries\ttfamily,
+    commentstyle=\color{gray}\ttfamily,
+	numbers=left,
+	stepnumber=1,
+	numbersep=0.75em,
+	numberstyle=\small\color{lightgray2}\ttfamily,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{black},
+	commentstyle=\color{black},
+	stringstyle=\slshape\color{darkgray2},
+	frame=single,
+	tabsize=4,	
+	backgroundcolor=\color{lightgray2},
+	captionpos=b,
+	aboveskip=\bigskipamount,
+	belowskip=\medskipamount,
+    abovecaptionskip=\bigskipamount,
+    belowcaptionskip=\bigskipamount,
+	showspaces=false,
+	breaklines=true,			
+	numberblanklines=true,
+	showstringspaces= false,
+	breakindent = 0pt,
+	morekeywords={nav, header, footer, main, aside, article, placeholder, role,
+	aria-live, tabindex}
+	%keepspaces=true,
+	%columns=fullflexible
+	%xleftmargin=\lstxframesep,	
+	%framerule=0.5pt
+	%framesep=0
+}
+
+% Bildeunterschrift
+%\usepackage[format=hang, justification=centering, singlelinecheck=off]{caption}
+\usepackage[center]{caption}
+\DeclareCaptionFormat{empty}{} % HACK Unterschriften fuer Tabellen verstecken aber im LoT
+% zeigen
+
+% Bildeunterschrift pro Minipage
+\usepackage{subcaption}
+
+% Anmerkungen Ende eindeutschen
+%\usepackage{endnotes}
+%\renewcommand{\notesname}{Anmerkungen}
+
+% Fussnoten nicht bei jedem Chapter resetten
+\usepackage{chngcntr} 
+\counterwithout{footnote}{chapter}
+
+% Bibtexformat
+%\usepackage[style=authortitle-icomp, backend=bibtex]{biblatex}
+%\usepackage[style=numeric,firstinits=true, backend=bibtex,hyperref=true]{biblatex}
+\usepackage[style=numeric,backend=bibtex,hyperref=true]{biblatex}
+ 
+% Zeilenabstand Anhang
+\setlength{\bibitemsep}{1em} 
+
+% Besseres Kerning
+%\usepackage{microtype}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,
+factor=1100,stretch=10,shrink=10]{microtype}
+
+% Weissraum Auslassungspunkte
+\usepackage{ellipsis}
+
+% Eurosymbol 
+\usepackage{eurosym}
+
+% Graphiken
+\usepackage{color}
+\usepackage{pstricks} 
+\usepackage{transparent}
+
+% Todonotes
+\usepackage{todonotes}
+\setlength{\marginparwidth}{2.2cm}
+
+%Multicol
+\usepackage{multicol}
+
+%Booktabs Tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+\setlength{\defaultaddspace}{10pt}
+
+% Abkuerzungshelper
+\usepackage{xspace}
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+\newcommand{\html}{\mbox{HTML\,5}\xspace}
+\newcommand{\bspw}{beispielsweise\xspace}
+\newcommand{\sAbb}{siehe Abbildungen\xspace}
+\newcommand{\bFh}{Barrierefreiheit\xspace}
+
+%Acronyme
+%\usepackage[printonlyused]{acronym}
+\usepackage{acronym}
+
+%bar Chart
+\usepackage{bchart}
+
+%Pie Chart
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{tikz}
+\newcommand{\slice}[4]{
+  \pgfmathparse{0.5*#1+0.5*#2}
+  \let\midangle\pgfmathresult
+
+  % slice
+  \draw[thick,draw=black,fill=lightgray2] (0,0) -- (#1:1) arc (#1:#2:1) -- cycle;
+
+  % outer label
+  \node[label=\midangle:#4] at (\midangle:1) {};
+
+  % inner label
+  \pgfmathparse{min((#2-#1-10)/110*(-0.3),0)}
+  \let\temp\pgfmathresult
+  \pgfmathparse{max(\temp,-0.5) + 0.8}
+  \let\innerpos\pgfmathresult
+  \node at (\midangle:\innerpos) {#3};
+}
+
+% URL schoener formatieren
+%\usepackage[hyphens]{url} 
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[ 
+   colorlinks=true, 
+   breaklinks=true,        
+   linkcolor=black,  
+   filecolor=black,  
+   citecolor=black, 
+   pdfborder=black,  
+   urlcolor=black,
+   plainpages=false
+]{hyperref}
+
+%\usepackage{breakurl}
